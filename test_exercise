@@ -1,0 +1,29 @@
+1.  
+  SORT_ORDER = ["XXS", "XS", "S", "M", "L", "XL", "XXL", "XS/P", "S/P", "M/P", "L/P", "XL/P"]
+
+  def sort_sizes(list)
+    SORT_ORDER & list
+  end
+  
+  def sort_sizes(list)
+    list.sort_by { |x| SORT_ORDER.index(x) }
+  end
+
+2. 
+  SORT_ORDER = ["000", "00", "0", "2", "4", "6", "8", "10", "12", "14"]
+  
+  def sort_sizes(list)
+    SORT_ORDER  & list
+  end
+
+  def sort_sizes(list)
+    list.sort_by { |x| SORT_ORDER.index(x) }
+  end
+ 
+4. 
+  product_relations
+    source_id: integer
+    target_id: integer
+
+  has_many :relations, class_name: Product::Relation.name, foreign_key: :source_id
+  has_many :related_articles, through: :relations, class_name: Product::Article.name, source: :target
